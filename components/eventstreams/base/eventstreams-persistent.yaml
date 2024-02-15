@@ -56,6 +56,7 @@ spec:
       storage:
         type: persistent-claim
         class: ocs-storagecluster-ceph-rbd
+        size: 500Mi
     zookeeper:
       replicas: 3
       metricsConfig:
@@ -67,3 +68,4 @@ spec:
       storage:
         type: persistent-claim
         class: ocs-storagecluster-ceph-rbd
+        size: 500Mi
