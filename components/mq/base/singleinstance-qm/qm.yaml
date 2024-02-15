@@ -1,65 +1,34 @@
 apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
 metadata:
-  name: singleinstance-qm
   annotations:
-    certmanager.k8s.io/disable-auto-restart: "true"
-    configmap.reloader.stakater.com/reload: "singleinstance-qm-configmap"
-    secret.reloader.stakater.com/reload: "mq-external-tls-secret"
+    com.ibm.mq/write-defaults-spec: 'false'
+  name: singleinstance-qm
+  namespace: cp4i
 spec:
- # telemetry:
- #   tracing:
- #     instana:
- #       enabled: true
   license:
     accept: true
-    license: PATCHED_BY_KUSTOMIZE
-    use: PATCHED_BY_KUSTOMIZE
-  template:
-    pod:
-      containers:
-        - env:
-            - name: MQSNOAUT
-              value: "yes"
-          name: qmgr
+    license: L-VTPK-22YZPK
+    use: NonProduction
   queueManager:
-    mqsc:
-      - configMap:
-          name: singleinstance-qm-configmap
-          items:
-            - tls.mqsc
-    ini: 
-      - configMap:    
-          name: singleinstance-qm-configmap
-          items:
-            - mq.ini
-    availability:
-      type: SingleInstance
-    name: SINGLEINSTANCEQM
+    name: QM01
     resources:
       limits:
         cpu: 500m
       requests:
         cpu: 500m
     storage:
-      defaultClass: PATCHED_BY_KUSTOMIZE
       queueManager:
-        type: persistent
-  version: 9.3.4.0-r1
-  pki:
-    keys:
-      - name: default
-        secret:
-          secretName: mq-external-tls-secret
-          items:
-            - tls.key
-            - tls.crt
-    trust:
-      - name: trust
-        secret:
-          secretName: mq-external-tls-secret
-          items:
-            - tls.crt
-            - ca.crt
+        type: persistent-claim
+        size: 100Mi
+      persistedData:
+        enabled: true
+        size: 100Mi
+  version: 9.3.4.1-r1
   web:
+    console:
+      authentication:
+        provider: integration-keycloak
+      authorization:
+        provider: integration-keycloak
     enabled: true
