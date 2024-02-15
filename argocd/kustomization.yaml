@@ -27,7 +27,7 @@ patches:
   patch: |-
     - op: add
       path: /spec/source/repoURL
-      value: https://github.com/Nordic-MVP-GitOps-Repos/hypersonic-lightweight-cp4i.git
+      value: https://github.com/aleiamp/hypersonic-lightweight-cp4i-WS.git
     - op: add
       path: /spec/source/targetRevision
       value: cp4i2023.4.1
@@ -37,7 +37,7 @@ patches:
   patch: |-
     - op: add
       path: /spec/template/spec/source/repoURL
-      value: https://github.com/Nordic-MVP-GitOps-Repos/hypersonic-lightweight-cp4i.git
+      value: https://github.com/aleiamp/hypersonic-lightweight-cp4i-WS.git
     - op: add
       path: /spec/template/spec/source/targetRevision
       value: cp4i2023.4.1
