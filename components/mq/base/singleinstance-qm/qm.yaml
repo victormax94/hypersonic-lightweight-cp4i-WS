@@ -9,21 +9,11 @@ spec:
   license:
     accept: true
     license: L-VTPK-22YZPK
-    use: NonProduction
+    use: Production
   queueManager:
+    availability:
+      type: SingleInstance
     name: QM01
-    resources:
-      limits:
-        cpu: 500m
-      requests:
-        cpu: 500m
-    storage:
-      queueManager:
-        type: persistent-claim
-        size: 5Mi
-      persistedData:
-        enabled: true
-        size: 5Mi
   version: 9.3.4.1-r1
   web:
     console:
