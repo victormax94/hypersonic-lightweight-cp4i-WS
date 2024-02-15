@@ -20,10 +20,10 @@ spec:
     storage:
       queueManager:
         type: persistent-claim
-        size: 10Mi
+        size: 5Mi
       persistedData:
         enabled: true
-        size: 10Mi
+        size: 5Mi
   version: 9.3.4.1-r1
   web:
     console:
