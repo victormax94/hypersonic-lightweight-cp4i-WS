@@ -11,7 +11,7 @@ spec:
   source:
     path: ./argocd
     targetRevision: cp4i2023.4.1
-    repoURL: https://github.com/aleiamp/hypersonic-lightweight-cp4i-WS.git
+    repoURL: https://github.com/victormax94/hypersonic-lightweight-cp4i-WS.git
   syncPolicy:
     automated:
       prune: true
